@@ -7,7 +7,9 @@
   "properties": {
     "PolicyName": {
       "description": "The name of the policy",
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
     },
     "PolicyDocument": {
       "description": "The policy document",

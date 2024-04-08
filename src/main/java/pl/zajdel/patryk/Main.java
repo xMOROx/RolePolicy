@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        File file = new File("src/main/resources/test.json");
-        System.out.println(RolePolicy.verifyJsonFormat(file));
+        File file = new File("src/main/resources/validPolicy.json");
+        System.out.println(RolePolicy.verifyJsonFormat(file, "role-policy-schema.json"));
     }
 }

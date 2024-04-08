@@ -14,10 +14,10 @@ public class RolePolicy {
         return false;
     }
 
-    public static boolean verifyJsonFormat(File file) throws IOException {
+    public static boolean verifyJsonFormat(File jsonFile, String schemaName) throws IOException {
         JsonSchemaFactory schemaFactory = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V4);
-        JsonSchema schema = schemaFactory.getSchema(RolePolicy.class.getResourceAsStream("/role-policy-schema.json"));
-        JsonNode jsonNode = new ObjectMapper().readTree(file);
+        JsonSchema schema = schemaFactory.getSchema(RolePolicy.class.getResourceAsStream("/" + schemaName));
+        JsonNode jsonNode = new ObjectMapper().readTree(jsonFile);
         return schema.validate(jsonNode).isEmpty();
     }
 }
