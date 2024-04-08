@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AWS Role Policy",
+  "description": "Define a policy for an AWS role",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "PolicyName": {
+      "description": "The name of the policy",
+      "type": "string"
+    },
+    "PolicyDocument": {
+      "description": "The policy document",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Version": {
+          "description": "The policy version",
+          "type": "string"
+        },
+        "id": {
+          "description": "The policy ID",
+          "type": "string"
+        },
+        "Statement": {
+          "description": "The policy statement",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "Sid": {
+                "description": "The statement ID",
+                "type": "string"
+              },
+              "Effect": {
+                "description": "The effect of the policy",
+                "type": "string",
+                "enum": [
+                  "Allow",
+                  "Deny"
+                ]
+              },
+              "Principal": {
+                "description": "The principal of the policy",
+                "type": [
+                  "string",
+                  "object"
+                ],
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "Action": {
+                "description": "The action of the policy",
+                "type": [
+                  "string",
+                  "array"
+                ],
+                "items": {
+                  "type": "string"
+                }
+              },
+              "Resource": {
+                "description": "The resource of the policy",
+                "type": [
+                  "string",
+                  "array"
+                ],
+                "items": {
+                  "type": "string"
+                }
+              },
+              "Condition": {
+                "description": "The condition of the policy",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              },
+              "required": [
+                "Effect",
+                "Action"
+              ]
+            }
+          }
+        }
+      },
+      "required": [
+        "Version",
+        "Statement"
+      ]
+    }
+  },
+  "required": [
+    "PolicyName",
+    "PolicyDocument"
+  ]
+}
