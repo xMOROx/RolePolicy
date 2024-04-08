@@ -10,8 +10,18 @@
           "iam:ListRoles",
           "iam:ListUsers"
         ],
-        "Resource": "arn:aws:s3:::confidential-data/*"
-      }
+        "Resource": "d"
+      },
+        {
+            "Sid": "S3ListAccess",
+            "Effect": "Deny",
+            "Action": [
+            "s3:ListBucket",
+            "s3:ListBucketVersions",
+            "s3:ListBucketMultipartUploads"
+            ],
+            "Resource": ["arn:aws:s3:::confidential-data/*", "test"]
+        }
     ]
   }
 }
