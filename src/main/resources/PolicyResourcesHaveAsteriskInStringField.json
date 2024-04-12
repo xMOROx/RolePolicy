@@ -1,0 +1,41 @@
+{
+  "PolicyName": "root",
+  "PolicyDocument": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "IamListAccess",
+        "Effect": "Deny",
+        "Action": [
+          "iam:ListRoles",
+          "iam:ListUsers"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Sid": "S3ListAccess",
+        "Effect": "Deny",
+        "Action": [
+          "s3:ListBucket",
+          "s3:ListBucketVersions",
+          "s3:ListBucketMultipartUploads"
+        ],
+        "Resource": [
+          "arn:aws:s3:::confidential-data/*",
+          "arn:aws:s5:::confidential-data/*"
+        ]
+      }, {
+        "Sid": "S3ListAccess",
+        "Effect": "Deny",
+        "Action": [
+          "s3:ListBucket",
+          "s3:ListBucketVersions",
+          "s3:ListBucketMultipartUploads"
+        ],
+        "Resource": [
+          "arn:aws:s3:::confidential-data/*"
+        ]
+      }
+    ]
+  }
+}
