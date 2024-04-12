@@ -6,7 +6,6 @@ import com.networknt.schema.JsonSchema;
 import com.networknt.schema.JsonSchemaFactory;
 import com.networknt.schema.SpecVersion;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -17,16 +16,19 @@ public class RolePolicy {
         this.policy = policy;
     }
 
-    public static boolean verifyJsonFormat(File jsonFile, String schemaName) throws IOException {
-        JsonSchemaFactory schemaFactory = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V4);
-        JsonSchema schema = schemaFactory.getSchema(RolePolicy.class.getResourceAsStream("/" + schemaName));
-        JsonNode jsonNode = new ObjectMapper().readTree(jsonFile);
+    public static boolean verifyJsonFormat(JsonFile jsonFile, String schemaName) throws IOException {
+        JsonSchema schema = JsonSchemaFactory
+                .getInstance(SpecVersion.VersionFlag.V4)
+                .getSchema(RolePolicy.class.getResourceAsStream("/schemas/" + schemaName));
+
+        JsonNode jsonNode = new ObjectMapper().readTree(jsonFile.getFile());
+
         return schema.validate(jsonNode).isEmpty();
     }
 
-    public static RolePolicy fromJsonWithGivenSchema(File jsonFile, String schemaName) throws IOException, IllegalArgumentException {
+    public static RolePolicy fromJsonWithGivenSchema(JsonFile jsonFile, String schemaName) throws IOException, IllegalArgumentException {
         if (verifyJsonFormat(jsonFile, schemaName)) {
-            return new RolePolicy(new ObjectMapper().readTree(jsonFile));
+            return new RolePolicy(new ObjectMapper().readTree(jsonFile.getFile()));
         }
         throw new IllegalArgumentException("Invalid policy");
     }
