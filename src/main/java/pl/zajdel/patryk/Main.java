@@ -13,7 +13,7 @@ public class Main {
             System.out.println("Enter the path to the file or type 'default': ");
             String path = scanner.nextLine();
             if (path.equalsIgnoreCase("default")) {
-                file = JsonFile.fromPath("src/main/resources/ValidPolicy.json").get();
+                file = JsonFile.fromPath("src/main/resources/examples/ValidPolicy.json").get();
                 break;
             }
 

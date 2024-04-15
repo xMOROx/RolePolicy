@@ -21,7 +21,7 @@ public class RolePolicyTest {
     @Test
     public void shouldReturnTrueIfJsonMeetsTheSchema() throws IOException {
         // given
-        Mockito.when(jsonFile.getFile()).thenReturn(new File("src/main/resources/ValidPolicy.json"));
+        Mockito.when(jsonFile.getFile()).thenReturn(new File("src/main/resources/examples/ValidPolicy.json"));
         // when
         boolean result = RolePolicy.verifyJsonFormat(jsonFile, schemaName);
 
@@ -32,7 +32,7 @@ public class RolePolicyTest {
     @Test
     public void shouldReturnFalseIfPolicyNameIsLongerThan128Characters() throws IOException {
         // given
-        Mockito.when(jsonFile.getFile()).thenReturn(new File("src/main/resources/InvalidPolicyName.json"));
+        Mockito.when(jsonFile.getFile()).thenReturn(new File("src/main/resources/examples/InvalidPolicyName.json"));
         // when
         boolean result = RolePolicy.verifyJsonFormat(jsonFile, schemaName);
 
@@ -43,7 +43,7 @@ public class RolePolicyTest {
     @Test
     public void shouldReturnTheInstanceIfJsonMeetsTheSchema() throws IOException {
         // given
-        Mockito.when(jsonFile.getFile()).thenReturn(new File("src/main/resources/ValidPolicy.json"));
+        Mockito.when(jsonFile.getFile()).thenReturn(new File("src/main/resources/examples/ValidPolicy.json"));
 
         // when
         RolePolicy rolePolicy = RolePolicy.fromJsonWithGivenSchema(jsonFile, schemaName);
@@ -55,7 +55,7 @@ public class RolePolicyTest {
     @Test
     public void shouldThrowIllegalArgumentExceptionIfJsonDoesNotMeetTheSchema() {
         // given
-        Mockito.when(jsonFile.getFile()).thenReturn(new File("src/main/resources/InvalidPolicyName.json"));
+        Mockito.when(jsonFile.getFile()).thenReturn(new File("src/main/resources/examples/InvalidPolicyName.json"));
 
         // when
         // then
@@ -65,7 +65,7 @@ public class RolePolicyTest {
     @Test
     public void shouldReturnTrueIfResourcesAreValid() throws IOException {
         // given
-        Mockito.when(jsonFile.getFile()).thenReturn(new File("src/main/resources/ValidPolicy.json"));
+        Mockito.when(jsonFile.getFile()).thenReturn(new File("src/main/resources/examples/ValidPolicy.json"));
         RolePolicy rolePolicy = RolePolicy.fromJsonWithGivenSchema(jsonFile, schemaName);
 
         // when
@@ -78,7 +78,7 @@ public class RolePolicyTest {
     @Test
     public void shouldReturnFalseIfResourcesDefineAsStringHasAsterisk() throws IOException {
         // given
-        Mockito.when(jsonFile.getFile()).thenReturn(new File("src/main/resources/PolicyResourcesHaveAsteriskInStringField.json"));
+        Mockito.when(jsonFile.getFile()).thenReturn(new File("src/main/resources/examples/PolicyResourcesHaveAsteriskInStringField.json"));
         RolePolicy rolePolicy = RolePolicy.fromJsonWithGivenSchema(jsonFile, schemaName);
 
         // when
@@ -91,7 +91,7 @@ public class RolePolicyTest {
     @Test
     public void shouldReturnFalseIfResourcesDefineAsArrayHasAsterisk() throws IOException {
         // given
-        Mockito.when(jsonFile.getFile()).thenReturn(new File("src/main/resources/PolicyResourcesHaveAsteriskInArrayField.json"));
+        Mockito.when(jsonFile.getFile()).thenReturn(new File("src/main/resources/examples/PolicyResourcesHaveAsteriskInArrayField.json"));
         RolePolicy rolePolicy = RolePolicy.fromJsonWithGivenSchema(jsonFile, schemaName);
 
         // when
