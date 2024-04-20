@@ -22,7 +22,8 @@ The schema was defined in `src/main/resources/schemas/RolePolicy.json` using Jso
   mvn clean compile exec:java
 ```
 
-You need no provide path to a file with valid json format or choose `default` to use the default file.
+You need to provide path to a file with valid json format or choose `default` to use the default file.
+
 Some of defined files are in `src/main/resources/examples` folder.
 
 ## Tests
