@@ -6,11 +6,8 @@
       {
         "Sid": "IamListAccess",
         "Effect": "Deny",
-        "Action": [
-          "iam:ListRoles",
-          "iam:ListUsers"
-        ],
-        "Resource": "teas"
+        "Action": "iam:ListRoles",
+        "Resource": "test"
       },
       {
         "Sid": "S3ListAccess",
@@ -24,7 +21,8 @@
           "arn:aws:s3:::confidential-data/*",
           "test"
         ]
-      }, {
+      },
+      {
         "Sid": "S3ListAccess",
         "Effect": "Deny",
         "Action": [
@@ -34,7 +32,7 @@
         ],
         "Resource": [
           "arn:aws:s3:::confidential-data/*",
-          "dsa"
+          "test/*"
         ]
       }
     ]

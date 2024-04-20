@@ -18,9 +18,7 @@ The schema was defined in `src/main/resources/schemas/RolePolicy.json` using Jso
 
 ## How to run
 
-```shell
-  mvn clean compile exec:java
-```
+```mvn clean compile exec:java```
 
 You need no provide path to a file with valid json format or choose `default` to use the default file.
 Some of defined files are in `src/main/resources/examples` folder.
@@ -28,6 +26,4 @@ Some of defined files are in `src/main/resources/examples` folder.
 ## Tests
 The tests are in `src/test/java` folder and can be run with the following command:
 
-```shell
-  mvn clean test
-```
+```mvn clean test```
